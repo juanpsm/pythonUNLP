@@ -1,0 +1,28 @@
+python --version
+pip --version
+python -m ensurepip --default-pip
+python -m pip install --upgrade pip setuptools wheel
+
+To install the latest version of “SomeProject”:
+
+pip install "SomeProject"
+To install a specific version:
+
+pip install "SomeProject==1.4"
+To install greater than or equal to one version and less than another:
+
+pip install "SomeProject>=1,<2"
+To install a version that’s “compatible” with a certain version: [4]
+
+pip install "SomeProject~=1.4.2"
+
+paquetes instalados :
+
+PySimpleGUI
+
+collections
+
+pattern3
+
+pattern
+

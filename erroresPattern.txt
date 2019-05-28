@@ -1,0 +1,38 @@
+COn pyton 3.7, pattern y pattern3 instalados con "pip" y "python -m pip"
+los programas dan #RuntimeError: generator raised StopIteration
+
+Instalar python 2.7
+Instalar VC
+
+>C:\Python27\python -m pip install --upgrade pip
+>C:\Python27\python -m pip install pattern
+
+eso se rompe en una de las dependencias.
+
+pagina de pattern:
+"Pattern is written for Python 2.5+ (no support for Python 3 yet). The module has no external dependencies, except LSA in the pattern.vector module, which requires NumPy (installed by default on Mac OS X). 
+
+To install Pattern so that the module is available in all Python scripts, from the command line do:
+
+> cd pattern-2.6
+> python setup.py install 
+If you have pip, you can automatically download and install from the PyPi repository:
+
+> pip install pattern
+"
+ entonces bajo el archivo pattern-2.6.zip, abrimos una terminal ahi y:
+
+>C:\Python27\python setup.py install
+
+funciona! Notar la ruta "C:\Python27\python" sin esto no anda porque con python 3.x el setup esta mal (los print no tienen parentesis)
+y por ultimo intalamos numpy porque dice en la pagina
+
+>C:\Python27\python -m pip install pattern
+
+recordar poner en la primer linea 
+# coding=utf-8
+
+Ahora en todos lados dice que para usar Python 3 se usa el comando "python3" pero en mi caso no anda "python" usa python 3.7 y con numeros "pythonX" o "pythonX.X" no anda hay que usar la ruta.
+Otra cosa pattern3 por que existe si en la pagina dice que no tiene soporte
+
+

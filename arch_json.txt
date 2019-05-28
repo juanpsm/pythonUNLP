@@ -1,0 +1,6 @@
+{'t': 'Samara', 'campo2': 'loqueñea', 'valor_nulo': None, 'booleano': True, 'alos': 'tambores', 'ń': 'ࠈ'}
+{'t': 'Samara', 'campo2': 'loqueñea', 'valor_nulo': None, 'booleano': True, 'alos': 'tambores', 'ń': 'ࠈ'}
+{"t": "Samara", "campo2": "loqueñea", "valor_nulo": null, "booleano": true, "alos": "tambores", "ń": "ࠈ"}
+{"t": "Samara", "campo2": "loqueñea", "valor_nulo": null, "booleano": true, "alos": "tambores", "ń": "ࠈ"}
+{"t": "Samara", "campo2": "loqueñea", "valor_nulo": null, "booleano": true, "alos": "tambores", "ń": "ࠈ"}
+{"t": "Samara", "campo2": "loqueñea", "valor_nulo": null, "booleano": true, "alos": "tambores", "ń": "ࠈ"}

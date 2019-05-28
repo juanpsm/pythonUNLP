@@ -1,0 +1,1 @@
+{"1": ["nombres", ["ana", "juan", "elena"]], "2": ["ropa", ["media", "pollera", "camisa", "remera"]], "3": ["transporte", ["auto", "micro", "moto", "bicicleta"]]}

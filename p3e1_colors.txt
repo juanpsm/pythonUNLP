@@ -1,0 +1,479 @@
+thistle3
+LavenderBlush2
+grey56
+AntiqueWhite3
+MistyRose3
+LightYellow3
+DarkGoldenrod1
+orchid1
+lime green
+lavender
+SpringGreen4
+DeepSkyBlue2
+LightPink2
+CadetBlue1
+tomato3
+lemon chiffon
+grey12
+SteelBlue2
+blue4
+SeaGreen2
+blue
+seashell2
+plum4
+MistyRose2
+thistle2
+OliveDrab4
+IndianRed2
+azure3
+light slate gray
+RoyalBlue1
+grey90
+violet red
+grey67
+grey64
+firebrick3
+IndianRed1
+grey72
+DarkOliveGreen4
+LightPink4
+orchid4
+aquamarine
+SeaGreen1
+wheat4
+grey54
+grey60
+grey46
+grey47
+bisque4
+azure
+grey57
+grey36
+cyan
+DarkOrchid1
+grey40
+grey35
+AntiqueWhite4
+SteelBlue1
+PaleTurquoise2
+MediumOrchid1
+OliveDrab1
+PaleVioletRed2
+PaleVioletRed3
+purple3
+pale violet red
+grey31
+LightBlue1
+burlywood2
+MediumOrchid2
+orange3
+Slategray1
+grey23
+sea green
+honeydew4
+ghost white
+light gray
+cadet blue
+dark olive green
+green2
+SteelBlue4
+cornsilk4
+PaleGreen2
+grey55
+pink4
+grey2
+RoyalBlue4
+grey7
+DodgerBlue4
+DarkOrange2
+LightGoldenrod3
+RoyalBlue3
+wheat2
+maroon4
+coral1
+aquamarine4
+turquoise3
+brown2
+DarkSeaGreen2
+ivory4
+VioletRed4
+goldenrod4
+snow3
+DeepPink2
+tomato4
+seashell3
+salmon4
+PeachPuff4
+antique white
+purple4
+tan2
+medium sea green
+thistle1
+red3
+LavenderBlush4
+green3
+grey82
+grey88
+pink3
+steel blue
+medium blue
+linen
+DarkSeaGreen3
+bisque
+OrangeRed3
+grey22
+LightGoldenrod2
+orange red
+light cyan
+light sea green
+NavajoWhite2
+sky blue
+light yellow
+white smoke
+pink1
+PaleTurquoise3
+cyan4
+grey66
+DarkOrchid4
+HotPink2
+LightSalmon4
+SlateBlue2
+AntiqueWhite1
+SkyBlue2
+powder blue
+tan4
+LavenderBlush3
+forest green
+grey85
+grey59
+royal blue
+thistle4
+khaki3
+yellow green
+indian red
+PeachPuff3
+LightCyan4
+LightSkyBlue2
+dark orange
+dark violet
+light coral
+SlateBlue1
+grey11
+khaki
+LemonChiffon4
+blanched almond
+grey91
+grey97
+RosyBrown3
+grey14
+grey86
+ivory3
+coral3
+grey24
+HotPink4
+DarkSeaGreen1
+honeydew2
+DeepSkyBlue3
+grey34
+OrangeRed2
+grey70
+saddle brown
+HotPink1
+grey16
+brown3
+ivory2
+DarkOrchid2
+grey61
+CadetBlue4
+wheat3
+PeachPuff2
+slate gray
+grey48
+MediumPurple4
+light sky blue
+chartreuse3
+grey76
+old lace
+sienna3
+dark slate gray
+plum1
+grey6
+dark orchid
+midnight blue
+orange
+grey44
+PaleTurquoise4
+sienna1
+OrangeRed4
+CadetBlue3
+grey49
+grey28
+grey1
+hot pink
+grey93
+DeepSkyBlue4
+coral2
+DodgerBlue2
+NavajoWhite4
+yellow2
+yellow
+chocolate1
+grey43
+SkyBlue4
+khaki2
+LightGoldenrod1
+grey87
+bisque2
+LightYellow2
+orange2
+LemonChiffon3
+grey89
+wheat1
+grey68
+sienna2
+light slate blue
+LightYellow4
+DodgerBlue3
+VioletRed1
+burlywood4
+grey42
+red
+Slategray3
+dim gray
+light steel blue
+turquoise1
+rosy brown
+DarkSlategray2
+tomato2
+grey98
+DarkSlategray3
+magenta2
+grey27
+red2
+maroon3
+grey32
+grey10
+grey65
+burlywood3
+thistle
+grey18
+snow4
+dark green
+grey30
+SpringGreen2
+LightBlue2
+grey71
+grey74
+grey29
+spring green
+khaki4
+coral4
+grey8
+LightSkyBlue4
+grey58
+magenta3
+sandy brown
+salmon
+cyan2
+grey73
+salmon1
+RosyBrown1
+SteelBlue3
+yellow3
+lawn green
+pale turquoise
+dark khaki
+brown1
+grey51
+LightCyan3
+medium orchid
+grey20
+MediumOrchid3
+PaleGreen4
+LightSteelBlue2
+chartreuse4
+OliveDrab2
+maroon1
+grey75
+dark turquoise
+aquamarine2
+firebrick2
+magenta4
+grey69
+grey17
+pale green
+cornflower blue
+PaleGreen1
+dark sea green
+cornsilk3
+LemonChiffon2
+DarkGoldenrod3
+goldenrod2
+mint cream
+PaleTurquoise1
+LightPink3
+coral
+LightSteelBlue4
+snow
+Slategray2
+gold4
+grey99
+brown4
+RosyBrown2
+cyan3
+peach puff
+medium aquamarine
+grey5
+LightGoldenrod4
+MistyRose4
+grey79
+deep pink
+maroon
+medium turquoise
+purple1
+SpringGreen3
+light blue
+NavajoWhite3
+firebrick1
+grey26
+azure2
+chartreuse2
+grey33
+green4
+green yellow
+azure4
+navajo white
+burlywood1
+DarkGoldenrod4
+PaleVioletRed1
+SkyBlue3
+SlateBlue4
+LightSalmon3
+grey19
+grey50
+grey78
+pink2
+gold2
+dodger blue
+SeaGreen3
+red4
+DarkOrange1
+IndianRed3
+LightSteelBlue3
+salmon3
+DarkOrange3
+grey25
+grey95
+pale goldenrod
+DarkSlategray4
+navy
+light goldenrod
+grey83
+grey62
+SlateBlue3
+grey4
+blue2
+grey39
+medium slate blue
+plum3
+turquoise2
+grey84
+pink
+maroon2
+LightBlue3
+lavender blush
+orange4
+alice blue
+MediumPurple2
+grey80
+SkyBlue1
+DeepPink3
+tan1
+grey38
+grey77
+CadetBlue2
+medium purple
+honeydew3
+LightPink1
+sienna4
+grey9
+grey81
+grey3
+grey53
+light pink
+LightSkyBlue3
+RosyBrown4
+firebrick4
+grey15
+khaki1
+DeepPink4
+dark salmon
+HotPink3
+PaleVioletRed4
+DarkGoldenrod2
+LightBlue4
+papaya whip
+snow2
+misty rose
+deep sky blue
+MediumPurple1
+DarkOrange4
+gold
+turquoise4
+RoyalBlue2
+goldenrod1
+dark slate blue
+grey37
+salmon2
+turquoise
+olive drab
+DarkOrchid3
+PaleGreen3
+IndianRed4
+floral white
+orchid2
+LightCyan2
+MediumPurple3
+grey63
+purple
+blue violet
+DarkOliveGreen1
+VioletRed3
+medium spring green
+grey21
+DarkOliveGreen3
+chocolate2
+orchid3
+dark goldenrod
+DarkSlategray1
+LightSkyBlue1
+light goldenrod yellow
+AntiqueWhite2
+light salmon
+gainsboro
+Slategray4
+goldenrod3
+DarkOliveGreen2
+tomato
+grey92
+goldenrod
+gold3
+purple2
+cornsilk2
+plum2
+chocolate3
+seashell4
+grey45
+bisque3
+VioletRed2
+LightSteelBlue1
+gray
+yellow4
+grey52
+grey13
+medium violet red
+LightSalmon2
+DarkSeaGreen4
+grey94
+MediumOrchid4
+slate blue
