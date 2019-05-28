@@ -60,7 +60,7 @@ def cargar_tabla_desde_csv(archivo,data):
 	return (data,header_list)
 	
 def cargar_tabla_desde_json(archivo,data):
-	print('falta implementar')
+	data = json.load(archivo)
 	
 #tema=rand_tema()
 tema = 'Kayak'
