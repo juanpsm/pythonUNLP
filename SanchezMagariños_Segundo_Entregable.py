@@ -14,16 +14,11 @@ if sys.version_info[0] >= 3:
     import PySimpleGUI as sg  
 else:  
     import PySimpleGUI27 as sg  
-import math
 import random
 import json
 import csv
 import os
-import traceback
-def debug(__x):
-	'''Devuelve el nombre_var = valor_var, type: tipo_var'''
-	print (traceback.extract_stack(limit=2)[0][3][6:][:-1],"=",__x,', type:',type(__x))
-	
+
 def rand_tema():
 	raw_temas=  '''GreenTan      
 LightGreen      
@@ -41,113 +36,196 @@ TealMono'''
 	return random.choice(temas)
 	
 
-def cargar_tabla_desde_csv(archivo,data):
-	if archivo == '':
-		sys.exit(69)
-	button = sg.PopupYesNo('Does this file have column names already?')
-	if archivo is not None:
-		with open(archivo, "r", encoding='utf-8') as infile:
-			reader = csv.reader(infile)
-			if button == 'Yes':
-				header_list = next(reader)
-			try:
-				data = list(reader)  # read everything else into a list of rows
-				if button == 'No':
-					header_list = ['column' + str(x) for x in range(len(data[0]))]
-			except:
-				sg.PopupError('Error reading file')
-				sys.exit(69)
-	return (data,header_list)
-	
+def cargar_tabla_desde_csv(archivo,data,tiene_header):
+	try:
+		if archivo == '':
+			sys.exit(69)
+		button = sg.PopupYesNo('Tiene los títulos en la primer fila?')
+		if archivo is not None:
+			with open(archivo, "r", encoding='utf-8') as infile:
+				reader = csv.reader(infile)
+				if button == 'Yes':
+					header_list = next(reader)
+					tiene_header = True
+				try:
+					data = list(reader)  # read everything else into a list of rows
+					if button == 'No':
+						header_list = ['columna' + str(x) for x in range(len(data[0]))]
+						tiene_header = False
+				except:
+					sg.PopupError('Error reading file')
+					sys.exit(69)
+				print('header :',header_list)
+				print('\nData :',data)
+		return (data,header_list,tiene_header)
+	except PermissionError:
+		print('No tiene permiso para leer ese archivo. Elija otro.')
+
 def cargar_tabla_desde_json(archivo,data):
-	data = json.load(archivo)
+	try:
+		data=[] # vuelvo a inicializar porque si llamo dos veces el append agrega al final
+		with open(archivo,'r',encoding='utf-8') as infile:
+			dicc = json.load(infile)
+		header_list = list(dicc[0].keys())
+		#hay que editar el diccionario porque necesito una lista de listas y sin las keys
+		for elemento in dicc:
+			print('Elem',elemento)
+			data.append(list(elemento.values()))
+		print('header :',header_list)
+		print('\nData :',data)
+		return (data,header_list)
+	except PermissionError:
+		print('No tiene permiso para leer ese archivo. Elija otro.')
+
+def convertir_csv_a_json(archivo,filename,tiene_header):
+	try:
+		csvRuta = archivo
+		jsonRuta = filename+'.json'
+		print('Convertir',csvRuta,'a',jsonRuta)
+		data = [] #si tengo varios objetos se meten en una lista
+		with open(csvRuta,'r', newline='', encoding="utf-8") as arch_csv:
+			if tiene_header:
+				csvReader = csv.DictReader(arch_csv) #si omito el parametro fieldnames carga la primer fila como el mismo
+			else:
+				cantidad_de_campos = len(arch_csv.readline().split(',')) #leo la primer linea y cuento los campos
+				header_list = ['columna' + str(x) for x in range(cantidad_de_campos)] #armo los titulos
+				csvReader = csv.DictReader(arch_csv, fieldnames = header_list)
+
+			print('\n CSV :')
+			for fila in csvReader:
+				print('fila : ',fila)
+				data.append(fila)
+
+		print('dumps =',json.dumps(data, indent = 4,ensure_ascii=False))
+		with open(jsonRuta,'w', encoding="utf-8") as arch_json:
+			cadena_json = json.dumps(data, indent = 4,ensure_ascii=False)
+			arch_json.write(cadena_json)
+	except PermissionError: #ya lo lei al archivo asi que el problema esta a la salida
+		print('\n No tiene permiso para editar ese archivo. Cambiando el nombre a "',filename,'- copia.json"')
+		convertir_csv_a_json(archivo,filename+' - copia',tiene_header)
+
+def convertir_json_a_csv(archivo,filename):
+	try:
+		jsonRuta = archivo
+		csvRuta = filename+'.csv'
+		data = {}
+
+		with open(jsonRuta,'r', encoding="utf-8") as arch_json:
+			data = json.load(arch_json)
+
+		print('Contenido JSON:\n',json.dumps(data,indent=4,ensure_ascii=False))
+		print('\n Diccionario cargado:\n',data)
+		print('Guardo en',csvRuta)
+		with open(csvRuta,'w',encoding="utf-8") as arch_csv:
+			csvWriter = csv.writer(arch_csv,lineterminator='\n')
+
+			csvWriter.writerow(data[0].keys())  # header, agarro el primer elemento y le veo las claves
+			print('Titulos =',list(data[0].keys()))
+			for row in data:
+				csvWriter.writerow(row.values()) #cada fila son solo los valores sin las claves
+				print('Fila =',list(row.values()))
+	except PermissionError: #ya lo lei al archivo asi que el problema esta a la salida
+		print('\n No tiene permiso para editar ese archivo. Cambiando el nombre a: \n"',filename,'- copia.json"')
+		convertir_json_a_csv(archivo,filename+' - copia')
+
+def crear_archivos_de_prueba(nombre):
+	cadena_en_json='''[
+	{
+		"nombre":"Juan",
+		"edad":18,
+		"Carrera":"Lic. en Física",
+		"numero de alumno":null,
+		"rinde":true
+	},
+	{
+		"nombre":"Luis",
+		"edad":22,
+		"Carrera":"Biología",
+		"numero de alumno":"5559/8",
+		"rinde":false
+	},
+	{
+		"nombre":"Pedro",
+		"edad":31,
+		"Carrera":"Lic. en Sistemas",
+		"numero de alumno":"18795/6",
+		"rinde":true
+	}
+]'''
+	
+	# ~ data = json.loads(cadena_en_json) #si lo quisiera imprimir pero ya lo hago dentro del convertir
+	# ~ print('Archivo JSON:\n',json.dumps(data, indent = 4,ensure_ascii=False))
+	try:
+		archivo = nombre+'.json'
+		with open(archivo,'w', encoding = 'utf-8') as json_file:
+			json_file.write(cadena_en_json)
+		convertir_json_a_csv(archivo,nombre)
+	except PermissionError:
+		print('No tiene permiso para leer o editar ese archivo. Cambiando el nombre a "',nombre,'- copia.json"')
+		crear_archivos_de_prueba(nombre+' - copia')
 	
 #tema=rand_tema()
 tema = 'Kayak'
 sg.ChangeLookAndFeel(tema)
 
-# ~ archivo = "SanchezMagariños_Segundo_Entregable.csv" 
-# ~ filename, file_extension = os.path.splitext(archivo)
-# ~ debug(archivo)
-# ~ debug(filename)
-# ~ debug(file_extension)
-
 #aca voy a guardar los datos
 data = []
 header_list = []
+tiene_header = None
+nombre_prueba='test_entrega'
 
-# ~ data = [['arlen',23],['samara',15]]
-# ~ header_list = ['pj','age']
-# ~ (data, header_list)= cargar_tabla_desde_csv(archivo,[])
-# ~ debug(header_list)
-# ~ debug(data)
+menu = [
+		[sg.Input(key='_BROWSE_', enable_events=True, visible=False)], 
+		[sg.Button('Crear archivos de prueba', disabled = False, key='_CREAR_')],
+		[sg.FileBrowse('Abrir...', target='_BROWSE_', file_types=(("CSV Files, JSON Files", "*.csv;*.json"),))],
+		[sg.Button('Convertir', disabled = True, key='_SAVE_')],
+		[sg.Button('Cerrar')]
+		]
 
-CANVAS=(400,200)
-#https://github.com/PySimpleGUI/PySimpleGUI/issues/850
-layout = [
-			[sg.Input(key='_BROWSE_', enable_events=True, visible=False)], 
-			[sg.FileBrowse('CARGAR', target='_BROWSE_', file_types=(("CSV Files", "*.csv"),("JSON Files", "*.json"))),
-			sg.Button('Convertir', disabled = False, key='_SAVE_'), sg.Button('Cerrar')],
-			[sg.Table(values = data,
-							headings=header_list,
-							max_col_width=25,
-							auto_size_columns=True,
-							justification='right',
-							alternating_row_color='lightblue',
-							num_rows=min(len(data), 20),
-							#visible = False,
-							key='_TABLE_')]
-		 ]
-
-window = sg.Window('ENTREGABLE GUI').Layout(layout)
-
+window = sg.Window('Menu').Layout(menu)
 
 while True:                 # Event Loop  
 	event, val = window.Read()  
 	#print(event, val)
 	if event is None or event == 'Cerrar':  
 		break
+	if event == '_CREAR_':
+		print('Creados los archivos: ',nombre_prueba,'.json y ',nombre_prueba,'.csv', sep='')
+		crear_archivos_de_prueba(nombre_prueba)
 	if event == '_BROWSE_':
+		window.Hide()
 		archivo = val['_BROWSE_']
 		filename, file_extension = os.path.splitext(archivo)
-		debug(archivo)
-		debug(filename)
-		debug(file_extension)
-		if file_extension == ".csv":
-			(data, header_list)= cargar_tabla_desde_csv(archivo,data)
-			
-			# ~ window.FindElement('_TABLE_').Update(values=data)
-			# aca la unica forma de actualizar es creando otro layouto midificarlo asi
-			del layout[-1:] #todo esto porque no se puede actualizar los headings, tampoco lo puedo meter en un metodo
-			layout.append([sg.Table(values = data,
-								headings=header_list,
-								max_col_width=25,
-								auto_size_columns=True,
-								num_rows=min(len(data), 20),
-								key='_TABLE_')])
-			# ~ window.Refresh() ·# no hace nada
-			window.Close()
-			window = sg.Window('ENTREGABLE GUI').Layout(layout)
-		elif file_extension == ".json":
-			(data, header_list)= cargar_tabla_desde_json(archivo,data)
-			del layout[-1:]
-			layout.append([sg.Table(values = data,
-								headings=header_list,
-								max_col_width=25,
-								auto_size_columns=True,
-								num_rows=min(len(data), 20),
-								key='_TABLE_')])
-			window.Close()
-			window = sg.Window('ENTREGABLE GUI').Layout(layout)
+		if (archivo == '' or archivo == None or file_extension not in ('.csv','.json')): #lo de la ext es redundante
+			print('debe seleccionar un json o csv')
+			# ~ break #lo saco asi no corta la ejecucion
+		else:
+			try:
+				if file_extension == ".csv":
+					(data, header_list, tiene_header)= cargar_tabla_desde_csv(archivo,data,tiene_header)
+					window.FindElement('_SAVE_').Update(text = "Convertir a JSON")
+				elif file_extension == ".json":
+					(data, header_list)= cargar_tabla_desde_json(archivo,data)
+					window.FindElement('_SAVE_').Update(text = "Convertir a CSV" )
 
+				layout = [[sg.Table(values = data,
+									headings=header_list,
+									max_col_width=25,
+									auto_size_columns=True,
+									justification='right',
+									alternating_row_color='lightblue',
+									num_rows=min(len(data), 20),
+									key='_TABLE_')]
+									]
+				window2 = sg.Window(filename+file_extension.upper()).Layout(layout)
+				window2.Read()
+				window.FindElement('_SAVE_').Update(disabled = False)
+			except TypeError:
+				print('Como no tenía permiso para leer, se produjo un error de tipo.')
+		window.UnHide()
 	if event == '_SAVE_':
-		arch_out = open('SanchezMagariños_Segundo_Entregable.json','w')
-		# Puedo imprimir en pantalla lo que voy a guardar, con dumps
-		# que convierte una estructura tipo diccionario a JSON ydevuelve una cadena
-		# ensure_ascii = false para que lea caracteres utf-8 y no solo ascii
-		print(json.dumps(data, sort_keys=False, indent=4, ensure_ascii = False))
-		# Con dump escribo la info del diccionario en el archivo, pero antes
-		# convirtiendola a JSON
-		json.dump(data, arch_out)
-		arch_out.close()
+		if file_extension == ".csv":
+			convertir_csv_a_json(archivo,filename,tiene_header)
+		elif file_extension == ".json":
+			convertir_json_a_csv(archivo,filename)
 window.Close()
