@@ -1,6 +1,7 @@
 #https://rosettacode.org/wiki/Word_search#Python
 import re
 from random import shuffle, randint
+#comentario
  
 dirs = [[1, 0], [0, 1], [1, 1], [1, -1], [-1, 0], [0, -1], [-1, -1], [-1, 1]]
 n_rows = 10
