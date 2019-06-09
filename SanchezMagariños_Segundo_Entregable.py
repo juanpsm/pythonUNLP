@@ -198,10 +198,10 @@ menu = [
 		[sg.Button('Cerrar')]
 		]
 
-window = sg.Window('Menu').Layout(menu)
+pp = sg.Window('Menu').Layout(menu)
 
 while True:                 # Event Loop  
-	event, val = window.Read()  
+	event, val = pp.Read()  
 	#print(event, val)
 	if event is None or event == 'Cerrar':  
 		break
@@ -209,7 +209,7 @@ while True:                 # Event Loop
 		print('\nCreados los archivos: ',nombre_prueba,'.json y ',nombre_prueba,'.csv', sep='')
 		crear_archivos_de_prueba(nombre_prueba)
 	if event == '_BROWSE_':
-		window.Hide()
+		pp.Hide()
 		archivo = val['_BROWSE_']
 		filename, file_extension = os.path.splitext(archivo)
 		if (archivo == '' or archivo == None or file_extension not in ('.csv','.json')): #lo de la ext es redundante porque lo filtro en el browse
@@ -219,10 +219,10 @@ while True:                 # Event Loop
 			try:
 				if file_extension == ".csv":
 					(data, header_list, tiene_header)= cargar_tabla_desde_csv(archivo)
-					window.FindElement('_SAVE_').Update(text = "Convertir a JSON")
+					pp.FindElement('_SAVE_').Update(text = "Convertir a JSON")
 				elif file_extension == ".json":
 					(data, header_list)= cargar_tabla_desde_json(archivo)
-					window.FindElement('_SAVE_').Update(text = "Convertir a CSV" )
+					pp.FindElement('_SAVE_').Update(text = "Convertir a CSV" )
 
 				layout = [[sg.Table(values = data,
 									headings=header_list,
@@ -235,18 +235,18 @@ while True:                 # Event Loop
 									]
 				window2 = sg.Window(filename+file_extension.upper()).Layout(layout)
 				window2.Read()
-				window.FindElement('_INFO_').Update(visible = True)
+				pp.FindElement('_INFO_').Update(visible = True)
 				acortar_nombre = archivo
 				if len(archivo) > 30:
 					acortar_nombre= archivo[:15]+'\\ ~ \n\\'+archivo[-25:]
-				window.FindElement('_INFO_').Update('\n'+acortar_nombre)
-				window.FindElement('_SAVE_').Update(disabled = False)
+				pp.FindElement('_INFO_').Update('\n'+acortar_nombre)
+				pp.FindElement('_SAVE_').Update(disabled = False)
 			except TypeError:
 				print('Como no tenía permiso para leer, se produjo un error de tipo.')
-		window.UnHide()
+		pp.UnHide()
 	if event == '_SAVE_':
 		if file_extension == ".csv":
 			convertir_csv_a_json(archivo,filename,tiene_header)
 		elif file_extension == ".json":
 			convertir_json_a_csv(archivo,filename)
-window.Close()
+pp.Close()

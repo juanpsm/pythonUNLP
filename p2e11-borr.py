@@ -4,8 +4,8 @@ pp = pprint.PrettyPrinter(indent=4)
 import traceback
 def debug(__x):
 	'''Devuelve el nombre_var = valor_var, type: tipo_var'''
-	print'****** ',traceback.extract_stack(limit=2)[0][3][6:][:-1],"=",__x,', type:',type(__x)
-	print
+	print('****** ',traceback.extract_stack(limit=2)[0][3][6:][:-1],"=",__x,', type:',type(__x))
+	print()
 
 
 
@@ -61,16 +61,15 @@ verbos = search('VB*', t)
 #print verbos[0].string
 print
 print
-print '  Con search: '
-for v in verbos:
-	print v.string,'->',conjugate(v.string, INFINITIVE)
-print
-print '  Con chunks: '
+print('  Con search: ')
+print(v.string,'->',conjugate(v.string, INFINITIVE))
+print()
+print ('  Con chunks: ')
 for sentence in t:
 	for chunk in sentence.chunks:
-		#print chunk.type, [(w.string, w.type) for w in chunk.words]
+		#print (chunk.type, [(w.string, w.type) for w in chunk.words])
 		if chunk.type == 'VP':
 			for w in chunk.words:
-				print w.string,'->',conjugate(w.string, INFINITIVE)
+				print (w.string,'->',conjugate(w.string, INFINITIVE))
 		
-#print conjugate('soy', INFINITIVE)
+#print (conjugate('soy', INFINITIVE))
