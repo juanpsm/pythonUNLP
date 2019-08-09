@@ -199,16 +199,16 @@ def format_tamaño(T):
 					B='TB'
 	return str(T)+' '+B+' '
 
-def es_csv_o_json(x):
+def es_csv_o_json(x,ext):
 	'''Separa el nombre de archivo con los puntos, me quedo con el ultimo elemento de esa estructura y veo si esta en la lista de extensiones'''
-	return x.name.split('.')[-1] in {'csv', 'json'}
+	return x.name.split('.')[-1] == ext
 
-def listar_archivos_csv_o_json(ruta):
+def listar_archivos_csv_o_json(ruta,ext):
 	'''Este método que recibe un path como parametro y devuelve una lista de todos los nombres de archivo en el directorio que tengan extensiones csv o json ordenada por tamaño'''
 	
 	lista = list(filter(lambda x: isfile(x), scandir(ruta)))
 	
-	filtro = list(filter(lambda x: es_csv_o_json(x), lista))
+	filtro = list(filter(lambda x: es_csv_o_json(x,ext), lista))
 	
 	ordenada = sorted( filtro, key=lambda x: getsize(x))
 
@@ -229,7 +229,8 @@ menu = [
 		[sg.Button('Crear archivos de prueba', border_width=2, key='_CREAR_')],
 		[sg.FileBrowse('Abrir...', target='_BROWSE_', file_types=(("CSV Files, JSON Files", "*.csv;*.json"),))],
 		[sg.Button('Convertir', disabled = True,tooltip='Se habilitará, una vez que cargue algun archivo', key='_SAVE_')],
-		[sg.Button('Mostrar CSV/Json',tooltip='Mustra archivos CSV o Json en el directorio actual', key='_MOSTRAR_')],
+		[sg.Button('Mostrar CSV',tooltip='Mustra tamaño de archivos CSV en el directorio actual', key='_MOSTRAR_CSV_')],
+		[sg.Button('Mostrar Json',tooltip='Mustra tamaño de archivos Json en el directorio actual', key='_MOSTRAR_JSON_')],
 		[sg.Button('Cerrar')]
 		]
 
@@ -284,38 +285,47 @@ while True:                 # Event Loop
 			convertir_csv_a_json(archivo,filename,tiene_header)
 		elif file_extension == ".json":
 			convertir_json_a_csv(archivo,filename)
-	if event == '_MOSTRAR_':
+	if event in ('_MOSTRAR_CSV_','_MOSTRAR_JSON_'):
 		
-		# tomo el directorio actual
-		ruta = getcwd()
+		try:
+			# tomo el directorio actual
+			ruta = getcwd()
 
-		# la tabla la cargo con una lista de listas que tienen las filas y una lista que usa como cabecera
-		#(data, header_list)= ([['a','b','c'],['a1','b1','c1']],['Nombre de archivo','tamaño'])
+			# la tabla la cargo con una lista de listas que tienen las filas y una lista que usa como cabecera
+			#(data, header_list)= ([['a','b','c'],['a1','b1','c1']],['Nombre de archivo','tamaño'])
 
-		# Creo una lista en blanco pra llenarla con los datos
-		data = []
-		
-		# Asi armo las filas de la tabla, tomando los elementos de la lista que me devuelve el procedimiento 
-		# listar_archivos_csv_o_json, creo una lista con el nombre y el tamaño formateado para cada fila y la agrego a la lista de datos
-		
-		for x in listar_archivos_csv_o_json(ruta):
-			data.append([x.name,format_tamaño(getsize(x))])
+			# Creo una lista en blanco pra llenarla con los datos
+			data = []
 			
-		# Creo la cabecera de la tabla
-		header_list = ['Nombre de archivo','Tamaño']
-		
-		# Luego creo la ventana para mostrar la tabla, a la cual le asigno como datos la lista que creé
-		layout = [	[sg.Text('Archivos CSV o Json en del directorio :\n'+ruta)],
-					[sg.Table(values = data,
-							headings=header_list,
-							max_col_width=25,
-							auto_size_columns=True,
-							justification='right',
-							alternating_row_color='lightblue',
-							num_rows=min(len(data), 20),
-							key='_TABLE_')]
-							]
-		window3 = sg.Window('Archivos CSV / Json').Layout(layout)
-		window3.Read()
+			# Asi armo las filas de la tabla, tomando los elementos de la lista que me devuelve el procedimiento 
+			# listar_archivos_csv_o_json, creo una lista con el nombre y el tamaño formateado para cada fila y la agrego a la lista de datos
+			
+			if event == '_MOSTRAR_CSV_':
+				lista = listar_archivos_csv_o_json(ruta,'csv')
+			if event == '_MOSTRAR_JSON_':
+				lista = listar_archivos_csv_o_json(ruta,'json')
+			
+			
+			for x in lista:
+				data.append([x.name,format_tamaño(getsize(x))])
+				
+			# Creo la cabecera de la tabla
+			header_list = ['Nombre de archivo','Tamaño']
+			
+			# Luego creo la ventana para mostrar la tabla, a la cual le asigno como datos la lista que creé
+			layout = [	[sg.Text('Archivos CSV o Json en del directorio :\n'+ruta)],
+						[sg.Table(values = data,
+								headings=header_list,
+								max_col_width=25,
+								auto_size_columns=True,
+								justification='right',
+								alternating_row_color='lightblue',
+								num_rows=min(len(data), 20),
+								key='_TABLE_')]
+								]
+			window3 = sg.Window('Archivos CSV / Json').Layout(layout)
+			window3.Read()
+		except KeyError:
+			print('No hay ningun archivo de ese tipo')
 
 window.Close()
