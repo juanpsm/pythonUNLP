@@ -1,0 +1,24 @@
+conlcusión:
+
+
+
+como conclusión, queremos decir que a lo largo del trabajo hemos podido incorporar conocimientos, recursos y herramientas que 
+consideramos de gran valor para nuestra formación y para el desarrollo de futuror proyectos. En primer lugar, por su misma extensión, el trabajo hizo necesaria
+una división de tareas en la que cada miembro del grupo tuvo que asumir un rol y trabajar para el conjunto. En este sentido, fue de gran utilidad
+el uso de la plataforma GitHub como herramienta de versionado de código.
+Por otra parte, el uso de un lenguaje "open source" nos dio la posibilidad de capitalizar el trabajo realizado por otros programadores, cuyos códigos
+se encuentran disponibles en la web, adaptándolo a nuestros requerimientos, y asimismo poner nuestro propio trabajo a dispocisión de cualquiera que lo quiera usar, ya sea para
+usar la aplicación, o para servirse del código. 
+Otro beneficio que obtuvimos del desarrollo de esta tarea, es haber aprendido a documentar debidamente un código, lo cual favorece y facilita su reutilización .
+
+Por último, hacemos mención de una serie de aspectos que se podrían mejorar, o bien implementar para una versión futura de la aplicación:
+- Embellecimiento de la interfaz: 
+	-Gráficas más amigables ("splash art")
+	-Tachado de las palabras encontradas durante el juego
+	-Mejora de los botones de selección de color para cada tipo de palabra durante el juego
+	-Incorporación de efectos sonoros.
+	-
+- Implementar una opción que permita salvar y cargar una partida.
+- Incremento de la cantidad máxima de palabras permitidas para buscar en la sopa.
+- Que el tamaño de los botones en que aparecen los botones de la sopa varíen su tamaño en función de la cantidad de palabras a encontrar (a mayor cantidad, menor tamaño).
+- Solucionar la portabilidad de la aplicación empaquetando los recursos necesarios en un ejecutable.

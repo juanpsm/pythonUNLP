@@ -26,5 +26,5 @@ def main(args):
 			sigo_jugando = False
 		
 if __name__ == '__main__':
-    import sys
-    sys.exit(main(sys.argv))
+	import sys
+	sys.exit(main(sys.argv))

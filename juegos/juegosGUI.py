@@ -8,12 +8,12 @@ import time
 def main(args):
 	sg.ChangeLookAndFeel("SandyBeach")
 	usuarios={}
-	layout1 = [      
-				[sg.Text('Ingrese sus datos: ')],      
-				[sg.Text('Username'), sg.InputText("jaja", size=(10,0), key='_NAME_')],      
+	layout1 = [	  
+				[sg.Text('Ingrese sus datos: ')],	  
+				[sg.Text('Username'), sg.InputText("jaja", size=(10,0), key='_NAME_')],	  
 				[sg.Text('Cantidad de jugadores: '), sg.Text(len(usuarios.keys()), key='_COUNT_')],
 				[sg.Button('Aceptar'), sg.Button('Cerrar')]
-			]      
+			]	  
 
 	window = sg.Window('Juegos GUI').Layout(layout1)  
 	name = ''
@@ -29,11 +29,11 @@ def main(args):
 		print('values ',values)
 	window.Close()
 	
-	layout2 = [      
-				[sg.Text('Elija el juego, '+name+': ')],      
-				[sg.Button('Ahorcado', key='_HANG_')],      
-				[sg.Button('TA-TE-TI', key='_TA_')],      
-				[sg.Button('Otello', key='_OT_')],      
+	layout2 = [	  
+				[sg.Text('Elija el juego, '+name+': ')],	  
+				[sg.Button('Ahorcado', key='_HANG_')],	  
+				[sg.Button('TA-TE-TI', key='_TA_')],	  
+				[sg.Button('Otello', key='_OT_')],	  
 				[sg.Button('Salir')],
 			]  
 	window2 = sg.Window('Juegos GUI').Layout(layout2)
@@ -62,5 +62,5 @@ def main(args):
 
 		
 if __name__ == '__main__': # If your module is the main program
-    import sys
-    sys.exit(main(sys.argv))
+	import sys
+	sys.exit(main(sys.argv))

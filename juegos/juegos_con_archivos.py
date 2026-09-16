@@ -1,7 +1,7 @@
 '''Juegos con archivos
 * Agregar al programa juegos.py una función que guarde los datos del jugador y a qué juego jugó.
-    * Primero: definamos la estructura de datos a utilizar.
-    * Elijamos el formato de archivo a utilizar.
+	* Primero: definamos la estructura de datos a utilizar.
+	* Elijamos el formato de archivo a utilizar.
 
 * Si pasan el menú a PySimpleGUI, suman doble.'''
 import hangman
@@ -66,5 +66,5 @@ def main(args):
 	archivo.close()
 	
 if __name__ == '__main__':
-    import sys
-    sys.exit(main(sys.argv))
+	import sys
+	sys.exit(main(sys.argv))

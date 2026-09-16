@@ -1,2 +1,7 @@
 .vscode\*
 __pycache__\*
+
+tpfinal/tpfinalpython/*
+!tpfinal/tpfinalpython/.git-remote
+tpfinal/tpfinalinforme/*
+!tpfinal/tpfinalinforme/.git-remote

@@ -118,12 +118,12 @@ def main(args):
 	sg.ChangeLookAndFeel("SandyBeach")
 	
 	# Preparo un ventana del menu para pedir la info del usuario, en este caso solo el nombre, se le puede agregar mas campos facilmente
-	layout1 = [      
-				[sg.Text('Ingrese sus datos: ')],      
-				[sg.Text('Username:'), sg.InputText("Anonimous", size=(10,0), key='_NAME_')],      
+	layout1 = [	  
+				[sg.Text('Ingrese sus datos: ')],	  
+				[sg.Text('Username:'), sg.InputText("Anonimous", size=(10,0), key='_NAME_')],	  
 				[sg.Text(str(contar_info())+' personas han jugado.', key='_COUNT_')],
 				[sg.Button('Aceptar'), sg.Button('Cerrar')]
-			]      
+			]	  
 	window = sg.Window('Juegos GUI').Layout(layout1)  
 
 	# Inicializo unas variables donde guardare la informacion del usuario
@@ -148,7 +148,7 @@ def main(args):
 	
 	# Cierro la ventana del nombre y preparo el menú de juegos
 	l=50
-	layout2 = [      
+	layout2 = [	  
 				[sg.Text('Elija el juego, '+name+': ',justification='center',key='_txt_')],
 				[sg.Button('Ahorcado',pad = ((l,l), 3), key='_HANG_')],
 				[sg.Button('TA-TE-TI',pad = ((l,l), 3), key='_TA_')],
@@ -212,4 +212,4 @@ def main(args):
 		guardar_info(datos)
 
 if __name__ == '__main__':
-    sys.exit(main(sys.argv))
+	sys.exit(main(sys.argv))
